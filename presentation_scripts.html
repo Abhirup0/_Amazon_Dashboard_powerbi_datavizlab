@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Sales Performance – Presentation Scripts</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #faf8f4;
+    --ink: #1a1714;
+    --muted: #6b6560;
+    --rule: #e2ddd8;
+    --accent: #c0392b;
+    --accent-soft: #f9eeec;
+    --badge-1: #1a3a5c;
+    --badge-2: #1e5c38;
+    --badge-3: #5c3a1a;
+    --badge-4: #3a1a5c;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    padding: 0 0 60px;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 40px 20px 28px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  header .label {
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  header .subtitle {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── Nav pills ── */
+  .nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rule);
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a {
+    flex-shrink: 0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    background: #fff;
+    transition: all .2s;
+  }
+  .nav a:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ── Section ── */
+  .section {
+    padding: 36px 20px 0;
+  }
+
+  /* Speaker badge */
+  .speaker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .speaker-badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .speaker-badge .name {
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .s1 .dot { background: var(--badge-1); }
+  .s1 .name { color: var(--badge-1); }
+  .s2 .dot { background: var(--badge-2); }
+  .s2 .name { color: var(--badge-2); }
+  .s3 .dot { background: var(--badge-3); }
+  .s3 .name { color: var(--badge-3); }
+  .s4 .dot { background: var(--badge-4); }
+  .s4 .name { color: var(--badge-4); }
+
+  .section h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .section .duration {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    margin-bottom: 24px;
+  }
+
+  /* Divider between sections */
+  .divider {
+    margin: 36px 20px 0;
+    border: none;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  .divider::after {
+    content: '✦';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 10px;
+    font-size: 10px;
+    color: var(--rule);
+  }
+
+  /* Paragraphs */
+  .para {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #2a2520;
+  }
+  .para:last-child { margin-bottom: 0; }
+
+  /* Highlight */
+  mark {
+    background: none;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Key point block */
+  .key-point {
+    background: #fff;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 14.5px;
+  }
+  .key-point strong {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  /* Stat row */
+  .stat-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+  }
+  .stat {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-width: 110px;
+    flex: 1;
+  }
+  .stat .val {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .stat .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* italic opener */
+  .opener {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    border-left: 2px solid var(--rule);
+    padding-left: 14px;
+  }
+
+  /* back to top */
+  .top-btn {
+    display: block;
+    text-align: center;
+    margin: 40px auto 0;
+    width: max-content;
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 8px 18px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="label">Group Presentation</p>
+  <h1>Amazon Sales Performance<br>Data-Driven Insights for Growth</h1>
+  <p class="subtitle">Full Presenter Scripts &nbsp;·&nbsp; 4 Speakers</p>
+</header>
+
+<nav class="nav">
+  <a href="#abhirup">Abhirup</a>
+  <a href="#joydeep">Joydeep</a>
+  <a href="#shayak">Shayak</a>
+  <a href="#afaan">Afaan</a>
+</nav>
+
+
+<!-- ══════════════════════════════
+     SPEAKER 1 – ABHIRUP
+════════════════════════════════ -->
+<section class="section s1" id="abhirup">
+  <div class="speaker-badge s1">
+    <span class="dot"></span>
+    <span class="name">Abhirup Karmakar</span>
+  </div>
+  <h2>Intro + Project Overview &amp; Dashboard</h2>
+  <p class="duration">⏱ 2.5 Minutes &nbsp;·&nbsp; Slides 1–3</p>
+
+  <p class="para">Good morning everyone. I'm <mark>Abhirup Karmakar</mark>, and today I'll be presenting our project, <mark>Amazon Sales Performance: Data-Driven Insights for Growth and Optimization</mark>.</p>
+
+  <p class="para">In today's competitive e-commerce landscape, businesses generate massive volumes of data every day — but <mark>raw data alone does not create value</mark>. The real advantage comes from transforming that data into <mark>meaningful insights</mark> that support faster decisions, improved efficiency, and strategic growth.</p>
+
+  <p class="para">That is exactly what motivated this project.</p>
+
+  <p class="para">Our objective was to design a <mark>centralized, interactive, one-page business intelligence dashboard</mark> using Amazon sales data that enables decision-makers to monitor performance, identify trends, and act proactively.</p>
+
+  <p class="para">This project focuses on <mark>four key goals</mark>:</p>
+
+  <div class="key-point">
+    <strong>01 · Build &amp; Centralize</strong>
+    Bring multiple business metrics into a <mark>single unified dashboard</mark>, eliminating fragmented reporting and creating one reliable source of truth.
+  </div>
+
+  <div class="key-point">
+    <strong>02 · Monitor Real-Time KPIs</strong>
+    Track critical indicators such as <mark>sales performance</mark>, order volume, and average delivery time, allowing dynamic performance monitoring.
+  </div>
+
+  <div class="key-point">
+    <strong>03 · Identify Key Business Drivers</strong>
+    Uncover what drives <mark>profitability</mark>, which customer segments perform best, and where operational inefficiencies or losses exist.
+  </div>
+
+  <div class="key-point">
+    <strong>04 · Empower Action</strong>
+    The ultimate purpose of analytics is not just insight, but <mark>decision-making</mark>. This dashboard supports faster, smarter, and more profitable business actions.
+  </div>
+
+  <p class="para">Moving to the <mark>dashboard overview</mark> —</p>
+
+  <p class="para">We designed this as a <mark>one-page executive intelligence solution</mark>, where high-level decision-makers can understand business performance in just a few seconds.</p>
+
+  <p class="para">The dashboard integrates several analytical layers.</p>
+
+  <p class="para">At the top, we present core KPIs such as <mark>Estimated Sales</mark>, <mark>Product Units</mark>, <mark>Order Volume</mark>, and <mark>Shipping Cost</mark>, giving an immediate performance snapshot.</p>
+
+  <p class="para">It also includes <mark>dynamic year-wise filters</mark> from 2012 to 2015, enabling comparative trend analysis over time.</p>
+
+  <p class="para">For deeper insights, we incorporated <mark>sales segmentation analysis</mark>, order-priority distribution, profit analysis by shipping mode, and customer-wise profitability tracking.</p>
+
+  <p class="para">Additionally, a <mark>global map visualization</mark> provides geographic performance insights, helping analyze logistics patterns and regional sales distribution.</p>
+
+  <p class="para">What makes this dashboard valuable is that it combines <mark>KPI monitoring</mark>, segment analysis, logistics intelligence, and geographic visualization into a single analytical framework — designed not just for reporting, but for <mark>decision support</mark>.</p>
+
+  <p class="para">In short, this project demonstrates how business intelligence can transform sales data into <mark>actionable insights</mark> for optimization, efficiency, and growth.</p>
+
+  <p class="para">Thank you — now I'll move forward to the next part of the presentation.</p>
+</section>
+
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════
+     SPEAKER 2 – JOYDEEP
+════════════════════════════════ -->
+<section class="section s2" id="joydeep">
+  <div class="speaker-badge s2">
+    <span class="dot"></span>
+    <span class="name">Joydeep Das</span>
+  </div>
+  <h2>KPIs + Customer Segment Analysis</h2>
+  <p class="duration">⏱ 2.5 Minutes &nbsp;·&nbsp; KPI &amp; Segmentation Slides</p>
+
+  <p class="opener">Thank you, Abhirup. Now I will present the Key Performance Indicators and Customer Segment Analysis, which help us evaluate both the health of the business and the drivers behind revenue generation.</p>
+
+  <p class="para">Let us begin with the <mark>Key KPIs</mark> — a snapshot of business health.</p>
+
+  <p class="para">This section functions like an <mark>executive summary</mark>, providing a high-level understanding of the scale, efficiency, and operational performance of the business in just a few seconds.</p>
+
+  <p class="para"><mark>Business Scale</mark>:</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="val">12.64M</div>
+      <div class="lbl">Total Estimated Sales</div>
+    </div>
+    <div class="stat">
+      <div class="val">178K</div>
+      <div class="lbl">Total Orders</div>
+    </div>
+    <div class="stat">
+      <div class="val">3,788</div>
+      <div class="lbl">Product Units Sold</div>
+    </div>
+  </div>
+
+  <p class="para">Together, these three metrics help us understand the <mark>magnitude of operations</mark> — how much the business is selling, how frequently customers are purchasing, and how products are performing at scale.</p>
+
+  <p class="para">Moving to <mark>Operational Efficiency</mark>, we analyze fulfillment-related performance.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="val">$26.48</div>
+      <div class="lbl">Avg. Shipping Cost</div>
+    </div>
+    <div class="stat">
+      <div class="val">3.97 days</div>
+      <div class="lbl">Avg. Delivery Time</div>
+    </div>
+  </div>
+
+  <p class="para">When viewed collectively, these KPIs offer what we describe as a <mark>CEO snapshot</mark> — in just a few seconds, decision-makers can assess <mark>scale, cost, and speed</mark>, which are three core dimensions of business health.</p>
+
+  <p class="para">Now moving to <mark>Sales by Customer Segment</mark>, this analysis helps identify where revenue is primarily coming from.</p>
+
+  <div class="key-point">
+    <strong>Consumer Segment — 51%</strong>
+    The <mark>highest revenue-generating segment</mark>. Individual buyers represent the strongest demand driver and form the foundation of sales performance.
+  </div>
+
+  <div class="key-point">
+    <strong>Corporate Segment — 30%</strong>
+    A <mark>substantial but secondary contribution</mark> from business customers.
+  </div>
+
+  <div class="key-point">
+    <strong>Home Office Segment — 18%</strong>
+    A smaller but <mark>still relevant portion</mark> of the revenue mix.
+  </div>
+
+  <p class="para">What makes this analysis important is not just the percentages, but the <mark>strategic implications</mark> behind them.</p>
+
+  <p class="para">Since the <mark>Consumer Segment dominates</mark> revenue contribution, it suggests that growth strategies — such as targeted promotions, customer retention programs, and personalized offerings — should <mark>prioritize this segment</mark>.</p>
+
+  <p class="para">At the same time, the <mark>Corporate and Home Office segments</mark> may present opportunities for expansion through focused market strategies.</p>
+
+  <p class="para">So overall, these two sections help us answer two critical questions — <mark>How healthy is the business operationally?</mark> And <mark>Which customer segments are driving that performance?</mark></p>
+
+  <p class="para">These insights create the foundation for deeper profitability and strategic analysis in the next section.</p>
+
+  <p class="para">Thank you.</p>
+</section>
+
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════
+     SPEAKER 3 – SHAYAK
+════════════════════════════════ -->
+<section class="section s3" id="shayak">
+  <div class="speaker-badge s3">
+    <span class="dot"></span>
+    <span class="name">Molla Shayak Imam</span>
+  </div>
+  <h2>Shipping Performance + Top Customers</h2>
+  <p class="duration">⏱ 2.5 Minutes &nbsp;·&nbsp; Profitability Slides</p>
+
+  <p class="opener">Thank you, Afaan. Now I will present two important analytical areas — Shipping Performance and Top Customers: The Profit Drivers, both of which help us understand where profitability is created and what operational factors influence it.</p>
+
+  <p class="para">Let us begin with <mark>Shipping Performance</mark>.</p>
+
+  <p class="para">This analysis focuses on the <mark>relationship between delivery methods and profit generation</mark>.</p>
+
+  <p class="para">One of the strongest insights revealed by the dashboard is that <mark>Standard Class shipping generates the highest profit</mark>, approximately <mark>0.89 million</mark>, significantly outperforming all other shipping modes.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="val">0.89M</div>
+      <div class="lbl">Standard Class</div>
+    </div>
+    <div class="stat">
+      <div class="val">0.25M</div>
+      <div class="lbl">Second Class</div>
+    </div>
+    <div class="stat">
+      <div class="val">0.18M</div>
+      <div class="lbl">First Class</div>
+    </div>
+    <div class="stat">
+      <div class="val">0.12M</div>
+      <div class="lbl">Same Day</div>
+    </div>
+  </div>
+
+  <p class="para">This creates a very clear profitability pattern: <mark>as shipping speed increases, profit margins decline</mark>.</p>
+
+  <p class="para">The reason behind this is that faster delivery options generally involve <mark>higher fulfillment and logistics costs</mark>, which reduce overall profitability despite offering speed advantages.</p>
+
+  <p class="para">In contrast, <mark>Standard Class</mark>, being more cost-efficient, delivers significantly stronger margins and emerges as the <mark>most profitable shipping model</mark>.</p>
+
+  <p class="para">Another important observation is that despite this emphasis on cost efficiency, the business still maintains an <mark>average delivery time of approximately 4 days</mark>, which indicates operational efficiency remains strong.</p>
+
+  <p class="para">So strategically, <mark>balancing customer service with cost-efficient shipping</mark> can improve both profitability and fulfillment performance.</p>
+
+  <p class="para">In simple terms, <mark>not all fast delivery creates high profit</mark> — in this case, smarter shipping creates higher value.</p>
+
+  <p class="para">Now moving to <mark>Top Customers: The Profit Drivers</mark>.</p>
+
+  <p class="para">This section shifts focus from operational profitability to <mark>customer-driven profitability</mark>.</p>
+
+  <p class="para">The analysis shows that <mark>profit is heavily concentrated among a relatively small group of high-value clients</mark>.</p>
+
+  <div class="key-point">
+    <strong>Customer A — 1.25M</strong>
+    The <mark>single largest profit contributor</mark>.
+  </div>
+  <div class="key-point">
+    <strong>Customer B — 980K &nbsp;·&nbsp; Customer C — 890K</strong>
+    Followed by several other major clients contributing <mark>substantial revenue</mark>.
+  </div>
+
+  <p class="para">What this tells us is that a <mark>significant portion of profit is driven by a limited number of loyal, high-value customers</mark>.</p>
+
+  <p class="para">This is a critical business insight — because when revenue is concentrated among key customers, those <mark>relationships become strategically important</mark>, not just financially valuable.</p>
+
+  <p class="para">It means <mark>customer retention, loyalty programs, personalized engagement, and premium relationship management</mark> should prioritize these clients to secure long-term base revenue.</p>
+
+  <p class="para">So if the previous slide answered <em>which shipping strategy drives profitability</em>, this slide answers <mark>which customers sustain that profitability</mark>.</p>
+
+  <p class="para">Together, these insights connect <mark>operational strategy with customer strategy</mark> — showing that profit optimization depends both on <mark>how we deliver</mark> and <mark>who we serve</mark>.</p>
+
+  <p class="para">Thank you.</p>
+</section>
+
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════
+     SPEAKER 4 – AFAAN
+════════════════════════════════ -->
+<section class="section s4" id="afaan">
+  <div class="speaker-badge s4">
+    <span class="dot"></span>
+    <span class="name">Md Afaan</span>
+  </div>
+  <h2>Loss-Making Products + Global Distribution + Conclusion</h2>
+  <p class="duration">⏱ 2.5 Minutes &nbsp;·&nbsp; Final Slides</p>
+
+  <p class="opener">Thank you, Shayak. Now I will present the final analytical section — covering Loss-Making Products, Global Sales Distribution, and the Key Insights &amp; Conclusion, which together focus on risk identification, growth opportunities, and strategic takeaways.</p>
+
+  <p class="para">Let me begin with <mark>Loss-Making Products</mark>.</p>
+
+  <p class="para">While revenue growth is important, <mark>sustainable business performance depends equally on protecting profit</mark>.</p>
+
+  <p class="para">This analysis helps identify <mark>revenue leaks</mark> — specific product lines that consistently generate negative profit margins.</p>
+
+  <p class="para">The dashboard shows that several products are operating at <mark>recurring losses</mark>, with the highest recorded loss reaching approximately <mark>8.9 thousand</mark> on a single product line.</p>
+
+  <p class="para">This is a significant finding — because even when sales volume appears strong, <mark>unprofitable products can quietly erode margins</mark> and weaken overall performance.</p>
+
+  <p class="para">That is why this insight signals <mark>immediate action requirements</mark>. From a business perspective, these products should be reviewed through:</p>
+
+  <div class="key-point">
+    <strong>Action Options</strong>
+    <mark>Pricing analysis</mark>, cost optimization, supply chain adjustments, or, if necessary, <mark>product discontinuation</mark>.
+  </div>
+
+  <p class="para">Because the goal is not simply to grow revenue, but to ensure that <mark>growth remains profitable</mark>.</p>
+
+  <p class="para">Now moving to <mark>Global Sales Distribution</mark>.</p>
+
+  <p class="para">This section shifts from internal risk analysis to <mark>external market opportunity</mark>.</p>
+
+  <p class="para">The geographic visualization shows that sales are distributed across multiple international regions, with <mark>strong high-density clusters</mark> indicating established market dominance in core regions.</p>
+
+  <p class="para">This confirms that the business already has a <mark>strong global footprint</mark>.</p>
+
+  <p class="para">However, an equally important insight comes from the <mark>lower-density regions</mark>. These emerging markets represent <mark>expansion opportunities</mark> where penetration remains relatively low, but growth potential remains significant.</p>
+
+  <p class="para">Strategically, this suggests the business can pursue growth not only by <mark>strengthening mature markets</mark>, but also by <mark>expanding selectively into underdeveloped regions</mark>.</p>
+
+  <p class="para">So this analysis balances <mark>market strength with future opportunity</mark>.</p>
+
+  <p class="para">Now finally, moving to <mark>Key Insights and Conclusion</mark>.</p>
+
+  <p class="para">This project generated <mark>four major strategic findings</mark>:</p>
+
+  <div class="key-point">
+    <strong>01 · Growth &amp; Audience</strong>
+    Revenue is scaling steadily, led primarily by the <mark>Consumer Segment</mark>, which remains the dominant sales driver.
+  </div>
+
+  <div class="key-point">
+    <strong>02 · Expansion Opportunity</strong>
+    Global analysis reveals strong potential to expand into <mark>low-density, emerging markets</mark>.
+  </div>
+
+  <div class="key-point">
+    <strong>03 · Logistics &amp; Loyalty</strong>
+    <mark>Standard Shipping</mark> emerged as the most profitable shipping model, while a small group of <mark>high-value customers</mark> drives a major share of profit.
+  </div>
+
+  <div class="key-point">
+    <strong>04 · Profitability Risk</strong>
+    Certain products consistently generate <mark>losses and require immediate management attention</mark>.
+  </div>
+
+  <p class="para">When these insights are viewed together, they show that <mark>business optimization is not driven by a single factor</mark>, but by the combination of customer intelligence, operational efficiency, geographic strategy, and profitability control.</p>
+
+  <p class="para">And that is the core contribution of this project — <mark>transforming Amazon sales data into actionable business intelligence</mark> for smarter decisions, stronger growth, and sustainable optimization.</p>
+
+  <p class="para">Thank you.</p>
+</section>
+
+<a href="#" class="top-btn">↑ Back to top</a>
+
+</body>
+</html>
