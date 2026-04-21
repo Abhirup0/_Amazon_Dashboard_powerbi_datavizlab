@@ -29,4 +29,4 @@ The dashboard tracks an array of critical KPIs, including:
 *   `Amazon_Sales_Performance_Dashboard_...pptx`: Detailed presentation regarding the project findings.
 
 ---
-*Created with ❤️ by Abhirup Karmakar*
+*Created with ❤️*
